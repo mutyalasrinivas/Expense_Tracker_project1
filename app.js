@@ -3,8 +3,7 @@ const express = require("express");
 const fs= require('fs');
 const path = require('path');
  const mysql=require('mysql2')
-const bodyParser = require("body-parser");
- const cors = require("cors");
+const cors = require("cors");
 const dotenv = require('dotenv');
 const helmet = require('helmet');
 const morgan =require('morgan');
@@ -30,7 +29,7 @@ dotenv.config();
 
 
 
-app.use(bodyParser.urlencoded({extended:true}))
+//app.use(bodyParser.urlencoded({extended:true}))
 app.use(cors());
 app.use(express.json());
 app.use('/user',userRoutes);
@@ -41,7 +40,7 @@ app.use('/password',resetPasswordRoutes);
 
 app.use((req,res)=>{
     console.log('url->',req.url);
-    res.sendFile(path.join(__dirname,`frontend/${req.url}`));
+    res.sendFile(path.join(__dirname,`public/${req.url}`));
 })
 
 app.use(helmet());
