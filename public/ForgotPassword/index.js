@@ -10,7 +10,7 @@ async function forgotpassword(e) {
       console.log(userDetails);
    
       const response = await axios.post(
-        "http://35.171.19.209:3000/password/forgotpassword",
+        "http://44.212.117.68:3000/password/forgotpassword",
         userDetails
       );
       if (response.status === 202) {

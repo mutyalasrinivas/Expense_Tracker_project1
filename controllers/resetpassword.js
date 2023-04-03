@@ -40,7 +40,7 @@ const forgotpassword = async (req, res) => {
        to:receivers,
        subject:'Reset Password',
        textContent:`Follow the link and reset password`,
-       htmlContent: `Click on the link below to reset password<a href="http://35.171.19.209:3000/password/resetpassword/${id}">Reset password</a>`,
+       htmlContent: `Click on the link below to reset password<a href="http://44.212.117.68:3000/password/resetpassword/${id}">Reset password</a>`,
 
     }).then((response)=>{
       return res.status(202).json({sucess: true, message: "password mail sent Successful"});
