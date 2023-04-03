@@ -14,7 +14,7 @@ async function addExpense(event){
         category
        }
        const token = localStorage.getItem('token') 
-        const res = await axios.post('http://35.171.19.209:3000/expense/addexpense',obj,{headers: {"Authorization": token}})
+        const res = await axios.post('http://44.212.117.68:3000/expense/addexpense',obj,{headers: {"Authorization": token}})
         console.log('ressssssss',res)
         if(res.status===200){
             // window.alert("success");
@@ -30,7 +30,7 @@ async function addExpense(event){
 async function download() {
   try {
          const token = localStorage.getItem("token");
-         const response = await axios.get('http://35.171.19.209:3000/expense/download', { headers: { "Authorization": token } });
+         const response = await axios.get('http://44.212.117.68:3000/expense/download', { headers: { "Authorization": token } });
           if (response.status === 200) {
              console.log(response);
            const a = document.createElement("a");
@@ -74,7 +74,7 @@ function showLeaderboard(){
   inputElement.value='Show Leaderboard'
   inputElement.onclick=async()=>{
       const token = localStorage.getItem('token')
-      const userLeaderBoardArray = await axios.get('http://35.171.19.209:3000/premium/showLeaderBoard',{headers:{"Authorization":token}})
+      const userLeaderBoardArray = await axios.get('http://44.212.117.68:3000/premium/showLeaderBoard',{headers:{"Authorization":token}})
       console.log(userLeaderBoardArray)
       var leaderboardElem = document.getElementById('leaderboard')
       leaderboardElem.className="container leaderboard"
@@ -116,7 +116,7 @@ async function showUserOnScreen(expense){
 async function deleteExpense(id){
     try{
         const token = localStorage.getItem("token");
-        await axios.delete(`http://35.171.19.209:3000/expense/expenses/${id}`, {
+        await axios.delete(`http://44.212.117.68:3000/expense/expenses/${id}`, {
             headers: {
               "Authorization":token
             }
@@ -134,7 +134,7 @@ async function downloadFileList(){
     
         try {
           const token = localStorage.getItem("token");
-          const response = await axios.get('http://35.171.19.209:3000/expense/downloadlist', {
+          const response = await axios.get('http://44.212.117.68:3000/expense/downloadlist', {
             headers: { "Authorization": token }
           });
           if (response.status === 200) {
@@ -162,7 +162,7 @@ async function downloadFileList(){
 
 document.getElementById('rzp-button1').onclick = async function(e){
     const token = localStorage.getItem('token')
-    const response=await axios.get('http://35.171.19.209:3000/purchase/premiummembership',{headers:{"Authorization":token}});
+    const response=await axios.get('http://44.212.117.68:3000/purchase/premiummembership',{headers:{"Authorization":token}});
     console.log(response);
     var options = 
     {
@@ -170,7 +170,7 @@ document.getElementById('rzp-button1').onclick = async function(e){
         "order_id":response.data.order.id,
         //this handler function handles the success payment
         "handler":async function(response){
-           const res= await axios.post('http://35.171.19.209:3000/purchase/updatetransactionstatus',{
+           const res= await axios.post('http://44.212.117.68:3000/purchase/updatetransactionstatus',{
                 order_id:options.order_id,
                 payment_id:response.razorpay_payment_id,
             },{ headers:{"Authorization":token}})
@@ -227,7 +227,7 @@ async function getExpenses() {
         showLeaderboard();
         showDownloadButtons();
     };
-    const response = await axios.get(`http://35.171.19.209:3000/expense/allexpenses?page=${currentPage}&rows=${rowsPerPage}`, { headers: {'Authorization': token}})
+    const response = await axios.get(`http://44.212.117.68:3000/expense/allexpenses?page=${currentPage}&rows=${rowsPerPage}`, { headers: {'Authorization': token}})
    document.getElementById('listOfExpenses').innerHTML = "";
    const { expenses, totalCount } = response.data;
    pagination(totalCount);
